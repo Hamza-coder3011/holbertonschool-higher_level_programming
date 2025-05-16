@@ -3,6 +3,7 @@
 This module provides a function that prints a square using '#' characters.
 """
 
+
 def print_square(size):
     """
     Prints a square with the character '#'.
