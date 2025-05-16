@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+Module matrix_divided.
+
+This module provides the matrix_divided function that divides each element
+of a matrix by a given divisor, with error checking.
+"""
+
+
 def matrix_divided(matrix, div):
     """
     Divides all elements of a matrix by div.
