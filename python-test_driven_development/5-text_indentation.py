@@ -3,9 +3,11 @@
 This module provides a function that prints text with indentation.
 """
 
+
 def text_indentation(text):
     """
-    Prints a text with 2 new lines after each of these characters: '.', '?' and ':'.
+    Prints a text with 2 new lines,
+    after each of these characters: '.', '?' and ':'.
 
     Args:
         text (str): The input text to format.
