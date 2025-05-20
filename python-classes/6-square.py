@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""Defines a class Square with size and position attributes and print functionality."""
+"""Defines a class Square with size and position
+    attributes and print functionality."""
 
 
 class Square:
     """Class that defines a square with a specific size and position."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize square with size and position (both validated via setters)."""
+        """Initialize square with size and position
+            (both validated via setters)."""
         self.size = size
         self.position = position
 
@@ -22,7 +24,7 @@ class Square:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-        self.__size =value
+        self.__size = value
 
     @property
     def position(self):
@@ -30,9 +32,9 @@ class Square:
         return self.__position
 
     @position.setter
-    def position( self, value):
+    def position(self, value):
         """"Setter for position with type and content validation."""
-        if(
+        if (
             not isinstance(value, tuple)
             or len(value) != 2
             or not all(isinstance(n, int) for n in value)
