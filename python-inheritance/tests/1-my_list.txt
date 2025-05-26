@@ -1,13 +1,25 @@
->>> from 1-my_list import MyList
->>> my_list = MyList()
->>> my_list.append(1)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
->>> print(my_list)
-[1, 4, 2, 3, 5]
->>> my_list.print_sorted()
-[1, 2, 3, 4, 5]
->>> print(my_list)
-[1, 4, 2, 3, 5]
+#!/usr/bin/python3
+import sys
+import importlib.util
+
+# Charger dynamiquement le module 1-my_list.py
+module_name = "my_list_module"
+module_path = "./1-my_list.py"
+
+spec = importlib.util.spec_from_file_location(module_name, module_path)
+my_list_module = importlib.util.module_from_spec(spec)
+sys.modules[module_name] = my_list_module
+spec.loader.exec_module(my_list_module)
+
+MyList = my_list_module.MyList
+
+# Test
+my_list = MyList()
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
+print(my_list)
+my_list.print_sorted()
+print(my_list)
