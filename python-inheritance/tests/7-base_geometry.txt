@@ -1,38 +1,33 @@
-BaseGeometry
-BaseGeometry.area
-BaseGeometry.integer_validator
-# Test de création d'une instance
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Standard Case: Création de l'objet
 >>> bg = BaseGeometry()
 >>> type(bg)
-<class 'BaseGeometry'>
+<class '7-base_geometry.BaseGeometry'>
 
-# Test de la méthode area
->>> try:
-...     bg.area()
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[Exception] area() is not implemented
+# Appel de la méthode area() (non implémentée)
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
 
-# Test integer_validator avec un entier positif
->>> bg.integer_validator("width", 10)
+# Validation correcte : entier positif
+>>> bg.integer_validator("age", 10)
 
-# Test integer_validator avec un entier négatif
->>> try:
-...     bg.integer_validator("height", -5)
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] height must be greater than 0
+# Validation incorrecte : valeur non entière
+>>> bg.integer_validator("name", "Jean")
+Traceback (most recent call last):
+...
+TypeError: name must be an integer
 
-# Test integer_validator avec 0
->>> try:
-...     bg.integer_validator("size", 0)
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] size must be greater than 0
+# Validation incorrecte : valeur 0
+>>> bg.integer_validator("size", 0)
+Traceback (most recent call last):
+...
+ValueError: size must be greater than 0
 
-# Test integer_validator avec une chaîne de caractères
->>> try:
-...     bg.integer_validator("age", "twelve")
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] age must be an integer
+# Validation incorrecte : valeur négative
+>>> bg.integer_validator("distance", -5)
+Traceback (most recent call last):
+...
+ValueError: distance must be greater than 0
