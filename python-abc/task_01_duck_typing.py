@@ -1,51 +1,68 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""
+This module defines an abstract class Animal
+"""
+
 from abc import ABC, abstractmethod
-import math
-"""Module that implements Shape, Circle and Rectangle for duck typing"""
+from math import pi
 
 
 class Shape(ABC):
-    """Abstract base class for geometric shapes"""
-
+    """  An abstract class Shape """
     @abstractmethod
     def area(self):
-        """Return the area of the shape"""
+        """
+        Return the area of the Shape
+        """
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Return the perimeter of the shape"""
+        """
+        Return the perimeter of the Shape
+        """
         pass
 
 
 class Circle(Shape):
-    """Circle shape class"""
+    """  A concrete class Circle inheritated from Shape """
 
     def __init__(self, radius):
         self.radius = radius
 
     def area(self):
-        return math.pi * self.radius ** 2
+        """
+        Return the area of the Circle
+        """
+        return pi * (abs(self.radius) ** 2)
 
     def perimeter(self):
-        return 2 * math.pi * self.radius
+        """
+        Return the perimeter of the Circle
+        """
+        return 2 * pi * abs(self.radius)
 
 
 class Rectangle(Shape):
-    """Rectangle shape class"""
+    """  A concrete class Rectangle inheritated from Shape """
 
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
     def area(self):
+        """
+        Return the area of the Rectangle
+        """
         return self.width * self.height
 
     def perimeter(self):
-        return 2 * (self.width + self.height)
+        """
+        Return the perimeter of the Rectangle
+        """
+        return (self.width + self.height) * 2
 
 
 def shape_info(shape):
-    """Print the area and perimeter of a shape using duck typing"""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
