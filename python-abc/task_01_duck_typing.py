@@ -20,6 +20,7 @@ class Shape(ABC):
 
 class Circle(Shape):
     """Circle shape class"""
+
     def __init__(self, radius):
         self.radius = radius
 
@@ -42,6 +43,7 @@ class Rectangle(Shape):
 
     def perimeter(self):
         return 2 * (self.width + self.height)
+
 
 def shape_info(shape):
     """Print the area and perimeter of a shape using duck typing"""
