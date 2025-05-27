@@ -1,0 +1,38 @@
+BaseGeometry
+BaseGeometry.area
+BaseGeometry.integer_validator
+# Test de création d'une instance
+>>> bg = BaseGeometry()
+>>> type(bg)
+<class 'BaseGeometry'>
+
+# Test de la méthode area
+>>> try:
+...     bg.area()
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[Exception] area() is not implemented
+
+# Test integer_validator avec un entier positif
+>>> bg.integer_validator("width", 10)
+
+# Test integer_validator avec un entier négatif
+>>> try:
+...     bg.integer_validator("height", -5)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] height must be greater than 0
+
+# Test integer_validator avec 0
+>>> try:
+...     bg.integer_validator("size", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] size must be greater than 0
+
+# Test integer_validator avec une chaîne de caractères
+>>> try:
+...     bg.integer_validator("age", "twelve")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] age must be an integer
