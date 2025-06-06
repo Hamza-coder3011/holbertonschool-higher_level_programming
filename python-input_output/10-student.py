@@ -34,6 +34,12 @@ class Student:
         Returns:
             dict: Dictionary representation of the Student.
         """
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        if isinstance(attrs, list) and all(
+            isinstance(attr, str) for attr in attrs
+        ):
+            return {
+                attr: getattr(self, attr)
+                for attr in attrs
+                if hasattr(self, attr)
+            }
         return self.__dict__
