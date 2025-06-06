@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+This module defines a Student class with methods for
+serialization and deserialization to/from JSON-compatible dictionaries.
+"""
+
+
+
 class Student:
     """Defines a student by first name, last name, and age."""
 
