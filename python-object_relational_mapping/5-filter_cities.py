@@ -20,6 +20,7 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
+
     query = """
         SELECT cities.name FROM cities
         JOIN states ON cities.state_id = states.id
@@ -27,9 +28,10 @@ if __name__ == "__main__":
         ORDER BY cities.id ASC;
     """
     cursor.execute(query, (state_name,))
+
     rows = cursor.fetchall()
 
-    print(", ".join(city[0] for city in rows))
+    print(", ".join(row[0] for row in rows))
 
     cursor.close()
     db.close()
