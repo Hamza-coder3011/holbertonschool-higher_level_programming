@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Lists all cities of a given state from the database hbtn_0e_4_usa."""
 
-import MySQLdb
 import sys
+import MySQLdb
 
 
 if __name__ == "__main__":
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     cursor.execute(query, (state_name,))
     rows = cursor.fetchall()
 
-    print(", ".join([row[0] for row in rows]))
+    print(", ".join(row[0] for row in rows))
 
     cursor.close()
     db.close()
