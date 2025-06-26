@@ -23,7 +23,8 @@ def main():
     session = Session()
 
     # Récupérer tous les State avec 'a' dans le nom
-    states_to_delete = session.query(State).filter(State.name.like('%a%')).all()
+    states_to_delete = session.query(State).filter(
+        State.name.like('%a%')).all()
 
     for state in states_to_delete:
         session.delete(state)

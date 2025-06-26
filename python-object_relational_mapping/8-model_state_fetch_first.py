@@ -12,7 +12,9 @@ if __name__ == "__main__":
     db_name = sys.argv[3]
 
     # Création de la connexion à la base de données
-    engine = create_engine(f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db_name}", pool_pre_ping=True)
+    engine = create_engine(
+         f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db_name}",
+         pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
