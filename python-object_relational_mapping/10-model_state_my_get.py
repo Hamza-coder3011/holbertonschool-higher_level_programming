@@ -14,7 +14,8 @@ if __name__ == "__main__":
     state_to_search = sys.argv[4]
 
     engine = create_engine(
-        f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db_name}",
+        "mysql+mysqldb://{}:{}@localhost:3306/{}"
+        .format(user, pwd, db_name),
         pool_pre_ping=True
     )
 
