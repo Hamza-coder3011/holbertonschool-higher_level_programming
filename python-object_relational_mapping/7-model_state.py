@@ -1,15 +1,31 @@
 #!/usr/bin/python3
-"""Definition of the State class and Base for SQLAlchemy."""
+"""Lists all State objects from the database hbtn_0e_6_usa."""
 
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
-Base = declarative_base()
+if __name__ == "__main__":
+    # Get arguments
+    user = sys.argv[1]
+    pwd = sys.argv[2]
+    db_name = sys.argv[3]
 
+    # Create engine and bind it
+    url = f"mysql+mysqldb://{user}:{pwd}@localhost:3306/{db_name}"
+    engine = create_engine(url, pool_pre_ping=True)
 
-class State(Base):
-    """Represents a state in the states table."""
-    __tablename__ = 'states'
+    # Create session
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    name = Column(String(128), nullable=False)
+    # Query all states ordered by id
+    states = session.query(State).order_by(State.id).all()
+
+    # Print results
+    for state in states:
+        print(f"{state.id}: {state.name}")
+
+    # Close session
+    session.close()
