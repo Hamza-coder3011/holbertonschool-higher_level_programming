@@ -14,13 +14,12 @@ if __name__ == "__main__":
                          user=user, passwd=pwd, db=db_name)
 
     cursor = db.cursor()
-    query = "SELECT id, name FROM states WHERE name = '{}' ORDER BY id ASC;"\
-        .format(state_name)
-    cursor.execute(query)
+    query = "SELECT id, name FROM states WHERE name = %s ORDER BY id ASC;"
+    cursor.execute(query, (state_name))
     rows = cursor.fetchall()
 
-    for id, name in rows:
-        print("({}, '{}')".format(id, name))
+    for row in rows:
+        print(row)
 
     cursor.close()
     db.close()
