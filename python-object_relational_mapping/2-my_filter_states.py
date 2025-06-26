@@ -18,8 +18,8 @@ if __name__ == "__main__":
     cursor.execute(query, (state_name))
     rows = cursor.fetchall()
 
-    for row in rows:
-        print(row)
+    for id, name in rows:
+        print("({}, '{}')".format(id, name))
 
     cursor.close()
     db.close()
