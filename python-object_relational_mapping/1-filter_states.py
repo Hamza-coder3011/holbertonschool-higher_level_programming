@@ -13,11 +13,12 @@ if __name__ == "__main__":
                          user=user, passwd=pwd, db=db_name)
 
     cursor = db.cursor()
-    cursor.execute("SELECT id, name FROM states " \
-                   "WHERE name LIKE 'N%' ORDER BY id ASC;")
+    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' "
+                   "ORDER BY id ASC;")
+    rows = cursor.fetchall()
 
-    for state in cursor.fetchall():
-        print(state)
+    for id, name in rows:
+        print("({}, '{}')".format(id, name))
 
     cursor.close()
     db.close()
