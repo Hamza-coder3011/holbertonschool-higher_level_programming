@@ -1,24 +1,37 @@
 #!/usr/bin/python3
-'''Module to list states starting with N'''
-
+"""
+Script to look for the MySQL server state with a given name.
+"""
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
-    user = sys.argv[1]
-    pwd = sys.argv[2]
-    db_name = sys.argv[3]
 
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=user, passwd=pwd, db=db_name)
+if __name__ == "__main__":
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+
+    db = None
+    cursor = None
+
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name,
+    )
 
     cursor = db.cursor()
-    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' "
-                   "ORDER BY id ASC;")
-    rows = cursor.fetchall()
 
-    for id, name in rows:
-        print("({}, '{}')".format(id, name))
+    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
+
+    cursor.execute(query)
+
+    states = cursor.fetchall()
+
+    for state in states:
+        print("({}, '{}')".format(state[0], state[1]))
 
     cursor.close()
     db.close()
