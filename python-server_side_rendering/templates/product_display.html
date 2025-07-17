@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produits</title>
+</head>
+<body>
+    <h1>Liste des produits</h1>
+
+    {% if error %}
+        <p style="color: red;">Erreur : {{ error }}</p>
+    {% endif %}
+
+    <ul>
+        {% for product in products %}
+            <li><strong>{{ product.name }}</strong> - {{ product.price }}€</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
