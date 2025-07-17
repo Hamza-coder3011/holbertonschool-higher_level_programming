@@ -5,11 +5,17 @@
     <title>Items</title>
 </head>
 <body>
-    <h1>Items List</h1>  <!-- ✅ Exactement ce que le test attend -->
-    <ul>
+    <h1>Items List</h1>
+
+    {% if items %}
+        <ul>
         {% for item in items %}
             <li>{{ item }}</li>
         {% endfor %}
-    </ul>
+        </ul>
+    {% else %}
+        <p>No items found</p>  <!-- ✅ Ce texte est requis par le test -->
+    {% endif %}
+
 </body>
 </html>
