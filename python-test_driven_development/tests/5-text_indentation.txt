@@ -1,0 +1,15 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello world. How are you?")
+Hello world.
+
+How are you?
+
+>>> text_indentation("Wait: what is this?")
+Wait:
+
+what is this?
+
+>>> text_indentation(12)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
