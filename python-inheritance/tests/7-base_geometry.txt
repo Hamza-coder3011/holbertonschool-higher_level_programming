@@ -1,41 +1,38 @@
->>> from base_geometry import BaseGeometry
->>> bg = BaseGeometry()
+#!/usr/bin/python3
+"""Module defining BaseGeometry class with doctests
 
-# Test area() raises Exception
+>>> from 7-base_geometry import BaseGeometry
+>>> bg = BaseGeometry()
 >>> try:
 ...     bg.area()
 ... except Exception as e:
 ...     print(e)
 area() is not implemented
 
-# Test integer_validator with valid integer
 >>> bg.integer_validator("width", 5)
 # Pas de sortie attendue pour un entier valide
 
-# Test integer_validator with 0 (should raise ValueError)
 >>> try:
 ...     bg.integer_validator("height", 0)
 ... except Exception as e:
 ...     print(e)
 height must be greater than 0
 
-# Test integer_validator with negative integer (should raise ValueError)
 >>> try:
 ...     bg.integer_validator("length", -3)
 ... except Exception as e:
 ...     print(e)
 length must be greater than 0
 
-# Test integer_validator with non-integer (should raise TypeError)
 >>> try:
 ...     bg.integer_validator("size", "10")
 ... except Exception as e:
 ...     print(e)
 size must be an integer
 
-# Test integer_validator with float (should raise TypeError)
 >>> try:
 ...     bg.integer_validator("depth", 2.5)
 ... except Exception as e:
 ...     print(e)
 depth must be an integer
+"""
