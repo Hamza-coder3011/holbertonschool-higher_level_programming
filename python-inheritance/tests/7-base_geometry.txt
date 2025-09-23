@@ -27,4 +27,3 @@ area() is not implemented
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [ValueError] distance must be greater than 0
-"""
