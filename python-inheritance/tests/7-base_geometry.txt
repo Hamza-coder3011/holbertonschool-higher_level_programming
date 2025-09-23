@@ -1,4 +1,8 @@
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+#!/usr/bin/python3
+"""
+Doctest file for BaseGeometry class
+
+>>> BaseGeometry = __import__('base_geometry_7_2').BaseGeometry
 >>> bg = BaseGeometry()
 
 >>> try:
@@ -17,6 +21,12 @@ area() is not implemented
 [TypeError] name must be an integer
 
 >>> try:
+...     bg.integer_validator("depth", 2.5)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] depth must be an integer
+
+>>> try:
 ...     bg.integer_validator("age", 0)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
@@ -27,3 +37,4 @@ area() is not implemented
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [ValueError] distance must be greater than 0
+"""
