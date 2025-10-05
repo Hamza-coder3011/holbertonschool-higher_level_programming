@@ -2,7 +2,6 @@
 """
 Module for serializing and deserializing a custom Python object using pickle.
 """
-
 import pickle
 import os
 
