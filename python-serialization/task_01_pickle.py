@@ -1,56 +1,49 @@
-#!/usr/bin/env python3
-"""
-Module for serializing and deserializing a custom Python object using pickle.
-"""
+#!/usr/bin/python3
+"""CustomObject class with serialization and deserialization using pickle."""
+
 import pickle
-import os
 
 
 class CustomObject:
-    def __init__(self, name: str, age: int, is_student: bool):
+    """Defines a custom object with name, age, and student status."""
+
+    def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
-        """Print the object's attributes in the required format."""
-        print(f"Name: {self.name}")
-        print(f"Age: {self.age}")
-        print(f"Is Student: {self.is_student}")
+        """Prints the attributes of the object."""
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Is Student:", self.is_student)
 
-    def serialize(self, filename: str):
+    def serialize(self, filename):
         """
-        Serialize this instance to a file using pickle.
+        Serializes the current object to the specified file.
 
-        Parameters:
-            filename (str): Path of the file to save the serialized object.
+        Args:
+            filename (str): Path to the output file.
         """
         try:
-            with open(filename, 'wb') as f:
-                pickle.dump(self, f)
-        except (OSError, pickle.PicklingError):
-            # Handle file errors or pickling errors
-            return None
+            with open(filename, "wb") as file:
+                pickle.dump(self, file)
+        except Exception:
+            pass  # Silently fail as per instructions
 
     @classmethod
-    def deserialize(cls, filename: str):
+    def deserialize(cls, filename):
         """
-        Deserialize an object from a file using pickle.
+        Deserializes an object from a file.
 
-        Parameters:
-            filename (str): Path of the file containing the serialized object.
+        Args:
+            filename (str): Path to the input file.
 
         Returns:
-            CustomObject or None: Returns the deserialized object,
-            or None if error occurs.
+            CustomObject | None: Deserialized object, or None on failure.
         """
-        if not os.path.exists(filename):
-            return None
         try:
-            with open(filename, 'rb') as f:
-                obj = pickle.load(f)
-                if isinstance(obj, cls):
-                    return obj
-                return None
-        except (OSError, pickle.UnpicklingError):
+            with open(filename, "rb") as file:
+                return pickle.load(file)
+        except Exception:
             return None
