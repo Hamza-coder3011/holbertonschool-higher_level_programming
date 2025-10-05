@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+This module defines a Student class with first_name,
+last_name, and age attributes, and provides methods to_json(attrs=None)
+and reload_from_json(json) for serialization and deserialization
+of a Student instance.
+"""
+
+
 class Student:
     """
     Defines a Student with first name, last name, and age,
