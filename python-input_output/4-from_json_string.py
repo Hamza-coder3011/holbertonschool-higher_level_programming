@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This module contains a function from_json_string(my_str) that
+returns the Python object represented by a JSON string.
+"""
 import json
 
 
