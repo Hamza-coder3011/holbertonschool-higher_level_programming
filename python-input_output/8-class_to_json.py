@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This module contains a function class_to_json(obj) that returns
+the dictionary representation of a class instance for JSON serialization.
+"""
 def class_to_json(obj):
     """
     Returns the dictionary description of an object
