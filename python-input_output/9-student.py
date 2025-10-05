@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This module defines a Student class with first_name,
+last_name, and age attributes,and a method to_json()
+that returns the dictionary representation of a Student instance.
+"""
+
 
 class Student:
     """
