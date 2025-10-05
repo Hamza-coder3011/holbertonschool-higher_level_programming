@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This module contains a function save_to_json_file(my_obj, filename)
+that writes a Python object to a file in JSON format.
+"""
 import json
 
 
