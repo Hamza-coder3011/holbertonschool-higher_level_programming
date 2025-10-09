@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv python3
 
 from flask import Flask, jsonify, request
 
