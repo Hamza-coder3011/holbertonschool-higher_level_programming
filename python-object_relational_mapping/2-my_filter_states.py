@@ -45,12 +45,10 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     query = (
-        "SELECT * FROM states"
-        "WHERE name LIKE BINARY '{}'"
+        "SELECT * FROM states WHERE name LIKE BINARY %s "
         "ORDER BY id ASC"
-    ).format(state_name)
-
-    cursor.execute(query)
+    )
+    cursor.execute(query, (state_name,))
 
     rows = cursor.fetchall()
     for row in rows:
