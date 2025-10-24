@@ -4,7 +4,8 @@ Displays all values in the 'states' table of 'hbtn_0e_0_usa'
 where 'name' matches the argument provided.
 
 Usage:
-    ./2-my_filter_states.py <mysql_username> <mysql_password> <database_name> <state_name>
+    ./2-my_filter_states.py <mysql_username>
+    <mysql_password> <database_name> <state_name>
 
 Arguments:
     mysql_username  MySQL username
@@ -33,7 +34,6 @@ if __name__ == "__main__":
     database = sys.argv[3]
     state_name = sys.argv[4]
 
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -52,11 +52,9 @@ if __name__ == "__main__":
 
     cursor.execute(query)
 
-
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
 
     cursor.close()
     db.close()
