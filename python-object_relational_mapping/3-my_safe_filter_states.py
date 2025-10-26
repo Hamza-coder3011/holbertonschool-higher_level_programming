@@ -33,8 +33,8 @@ if __name__ == "__main__":
     cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
                 (state_name,))
 
-    row = cur.fetchone()
-    if row:
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
     cur.close()
