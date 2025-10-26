@@ -1,40 +1,38 @@
 #!/usr/bin/python3
 """
-Prints the State object with the name passed as argument
-from the database hbtn_0e_6_usa.
+Script to search a specific state passed in parameters.
 """
-
 import sys
+from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:
-        print("Usage: ./10-model_state_my_get.py <mysql_username> "
-              "<mysql_password> <database_name> <state_name>")
+        print("Usage: {} <mysql username> <mysql pwd> <db name> <state search>"
+              .format(sys.argv[0]))
         sys.exit(1)
 
-    user = sys.argv[1]
+    username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_name = sys.argv[4]
+    state_searched = sys.argv[4]
 
     engine = create_engine(
-        f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}",
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(username, password, db_name),
         pool_pre_ping=True
     )
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == state_name).all()
+    state = session.query(State).filter(State.name == state_searched).first()
 
-    if states:
-        for state in states:
-            print((state.id, state.name))
+    if state:
+        print(state.id)
     else:
-        print("Nothing")
+        print("Not found")
 
     session.close()
