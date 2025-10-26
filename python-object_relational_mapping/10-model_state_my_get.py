@@ -8,7 +8,6 @@ import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
-from sqlalchemy import func
 
 
 if __name__ == "__main__":
@@ -30,10 +29,11 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.name == state_name).first()
+    states = session.query(State).filter(State.name == state_name).all()
 
-    if state:
-        print(state.id)
+    if states:
+        for state in states:
+            print((state.id, state.name))
     else:
         print("Nothing")
 
