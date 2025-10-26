@@ -14,11 +14,9 @@ if __name__ == "__main__":
               "<mysql_password> <database_name>")
         sys.exit(1)
 
-
     user = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-
 
     db = MySQLdb.connect(
         host="localhost",
@@ -29,7 +27,6 @@ if __name__ == "__main__":
     )
 
     cur = db.cursor()
-
 
     cur.execute("""
         SELECT cities.id, cities.name, states.name
